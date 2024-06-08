@@ -21,7 +21,7 @@ function getItem(param) {
     //Create image:
     var image = new Image();
     image.className = 'img-item';
-    image.src = '/legacy/' + imgName + '.png';
+    image.src = 'legacy/' + imgName + '.png';
     //Create title:
     var title = document.createElement('span');
     title.className = "thumb-title";
