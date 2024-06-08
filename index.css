@@ -1,0 +1,241 @@
+/* Color presets */
+:root {
+    --color-blue: #3b9fd5;
+    --color-darckgrey: #212121;
+    --color-lightgrey: #c5c5c5;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+}
+
+/* Global */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+    /* Force scrollbar. */
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--color-darckgrey);
+}
+
+.wrapper {
+    padding: 30px 10%;
+    transition: ease .2s;
+}
+
+/* Header */
+header {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+header .logo svg {
+    display: block;
+    width: 60px;
+}
+
+header .title h1 {
+    margin: .2em;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1em;
+    font-weight: normal;
+}
+
+header .title h3 {
+    margin: 0;
+    font-size: .9em;
+    font-weight: normal;
+    letter-spacing: .1em;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    position: relative;
+    padding: .25em .5em;
+    color: var(--color-lightgrey);
+    font-size: 1em;
+    text-decoration: none;
+}
+
+header nav ul li a:hover:after {
+    content: '';
+    display: block;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    top: 90%;
+    left: 0;
+    border-bottom: 4px solid var(--color-blue);
+}
+
+/* Grid */
+.grid {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Clearfix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Grid items */
+.item,
+.item-mid,
+.item-big {
+    display: inline-block;
+    position: relative;
+    width: 26%;
+    margin: 20px 3.5%;
+    margin-bottom: 80px;
+    background: var(--color-blue);
+    cursor: pointer;
+    /* Animation */
+    animation-name: append-item;
+    animation-duration: 0.6s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(.42, .97, .52, 1.49);
+}
+
+@keyframes append-item {
+    0% {
+        -webkit-transform: translateY(250px);
+        -ms-transform: translateY(250px);
+        -o-transform: translateY(250px);
+        transform: translateY(250px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
+.item img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    background-color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+
+}
+
+.item-mid img {
+    display: block;
+    width: 100%;
+    border: 3px solid #FFFFFF;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .item,
+    .item-mid img {
+        width: 45%;
+        margin: 15px 2.5%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+
+    .item,
+    .item-big img {
+        width: 100%;
+        margin: 15px 0%;
+    }
+}
+
+/* Items */
+.img-item {
+    position: relative;
+    transform: translate(1, 1);
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0 0px 0px rgba(0, 0, 0, 0);
+    transition: ease .5s;
+    will-change: transform, box-shadow;
+}
+
+.item:hover .img-item {
+    transform: translate(-2em, -2em);
+    /* -webkit-filter: grayscale(75%); */
+    /* filter: grayscale(75%); */
+    box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.20);
+    z-index: 1;
+}
+
+.item-mid:hover .img-item {
+    transform: translate(-2em, -2em);
+    /* -webkit-filter: grayscale(75%); */
+    /* filter: grayscale(75%); */
+    box-shadow: 4px 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.20);
+    z-index: 1;
+}
+
+.thumb-title {
+    position: absolute;
+    bottom: 0;
+    padding: .5em 1em;
+    color: #ffffff;
+    font-size: .8em;
+    letter-spacing: .1em;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+}
+
+.status {
+    display: none;
+}
+
+/* Lightbox */
+.sandbox {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000000;
+    z-index: 100;
+}
+
+.lightbox {
+    position: fixed;
+    width: 94%;
+    height: 94%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: black;
+    background-size: contain;
+    cursor: crosshair
+}

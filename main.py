@@ -16,7 +16,7 @@ update = []
 
 if response.ok:
     for poster in response.json()["data"]["list"]:
-        poster_id = str(poster["id"])
+        poster_id = f'{poster["id"]:04d}'
         poster_name = poster["thumb_name"]
         poster_hash = poster["thumb_hash"]
         poster_url = poster["thumb"]
