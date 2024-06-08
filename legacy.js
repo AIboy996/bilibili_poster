@@ -10,9 +10,9 @@ picsData = Object.values(database.responseJSON);
 
 //Global vars:
 var dataLength = picsData.length;
-var loopLength = 4; //Set loop length.
+var loopLength = 3; //Set loop length.
 var initItemsLength = 9; //set initial items length.
-var itemDelay = 50;
+var itemDelay = 300;
 
 //Create elements:
 function getItem(param) {
@@ -21,7 +21,7 @@ function getItem(param) {
     //Create image:
     var image = new Image();
     image.className = 'img-item';
-    image.src = 'imgs/legacy/' + imgName + '.png';
+    image.src = 'imgs/' + imgName + '.PNG';
     //Create title:
     var title = document.createElement('span');
     title.className = "thumb-title";

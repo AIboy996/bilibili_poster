@@ -10,9 +10,9 @@ picsData = Object.values(database.responseJSON).reverse();
 
 //Global vars:
 var dataLength = picsData.length;
-var loopLength = 4; //Set loop length.
+var loopLength = 3; //Set loop length.
 var initItemsLength = 9; //set initial items length.
-var itemDelay = 50;
+var itemDelay = 300;
 
 //Create elements:
 function getItem(param) {
