@@ -36,13 +36,13 @@ header {
     text-align: center;
 }
 
-head .logo {
+head .logo a {
     display: flex;
 }
 
 header .logo svg {
     display: block;
-    width: 60px;
+    width: 70px;
 }
 
 header .title h1 {
