@@ -10,9 +10,9 @@ picsData = Object.values(database.responseJSON).reverse();
 
 //Global vars:
 var dataLength = picsData.length;
-var loopLength = 3; //Set loop length.
-var initItemsLength = 9; //set initial items length.
-var itemDelay = 300;
+var loopLength = 6; //Set loop length.
+var initItemsLength = 12; //set initial items length.
+var itemDelay = 200;
 
 //Create elements:
 function getItem(param) {
@@ -50,7 +50,6 @@ function appendItemInit() {
                     // console.log(picsData[i].id);
                 }
                 else {
-                    $('.append-button').hide();
                     $(".status").fadeIn();
                 };
             }, itemDelay * i);
@@ -76,7 +75,6 @@ function appendItem() {
                     initItemsLength += 1;
                 }
                 else {
-                    $('.append-button').hide();
                     $(".status").fadeIn();
                 };
             }, itemDelay * i);
