@@ -36,7 +36,7 @@ header {
     text-align: center;
 }
 
-head .logo a {
+.logo{
     display: flex;
 }
 
@@ -113,7 +113,7 @@ header nav ul li a:hover:after {
     margin: 20px 3.5%;
     margin-bottom: 80px;
     background: var(--color-blue);
-    cursor: pointer;
+    /* cursor: pointer; */
     /* Animation */
     animation-name: append-item;
     animation-duration: 0.6s;
@@ -140,8 +140,7 @@ header nav ul li a:hover:after {
 
 .item img {
     display: block;
-    width: 100%;
-    max-width: 100%;
+    width: 102%;
     background-color: #FFFFFF;
     border: 3px solid #FFFFFF;
 
@@ -149,7 +148,8 @@ header nav ul li a:hover:after {
 
 .item-mid img {
     display: block;
-    width: 100%;
+    width: 120%;
+    background-color: #FFFFFF;
     border: 3px solid #FFFFFF;
 }
 
@@ -157,7 +157,7 @@ header nav ul li a:hover:after {
 @media screen and (max-width: 768px) {
 
     .item,
-    .item-mid img {
+    .item-mid {
         width: 45%;
         margin: 15px 2.5%;
     }
@@ -166,8 +166,8 @@ header nav ul li a:hover:after {
 @media screen and (max-width: 520px) {
 
     .item,
-    .item-big img {
-        width: 100%;
+    .item-big {
+        width: 45%;
         margin: 15px 0%;
     }
 }
