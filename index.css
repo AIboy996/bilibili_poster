@@ -158,17 +158,20 @@ header nav ul li a:hover:after {
 
     .item,
     .item-mid {
-        width: 45%;
-        margin: 15px 2.5%;
+        width: 46%;
+        margin: 15px 1.5%;
     }
 }
 
 @media screen and (max-width: 520px) {
 
-    .item,
-    .item-big {
-        width: 45%;
+    .item {
+        width: 100%;
         margin: 15px 0%;
+    }
+    .item-mid {
+        width: 86%;
+        margin: 0;
     }
 }
 
