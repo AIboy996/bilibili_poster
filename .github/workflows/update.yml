@@ -39,18 +39,11 @@ jobs:
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
                 branch: ${{ github.ref }}
-    trigger_deploy:
-        needs: spider
-        runs-on: ubuntu-latest
-        steps:
-            - name: Trigger tests
-              uses: actions/github-script@v6
-              with:
-                  script: |
-                      const res = await github.rest.repos.createDispatchEvent({
-                          owner: 'jaywcjlove',
-                          repo: 'typenexus',
-                          event_type: 'run-deploy'
-                      });
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Trigger deploy
+              if: ${{ steps.commit-files.outputs.hasChange == 'true' }}
+              run: |
+                  curl -X POST \
+                  -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                  -H "Accept: application/vnd.github.everest-preview+json" \
+                  https://api.github.com/repos/owner/repo/dispatches \
+                  -d '{"event_type": "run-deploy"}'
