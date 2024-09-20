@@ -33,7 +33,6 @@ jobs:
                 else
                     echo "No changes detected"
                 fi
-                      fi
             - name: Push changes
               uses: ad-m/github-push-action@master
               if: ${{ steps.commit-files.outputs.hasChange == 'true' }}
