@@ -20,7 +20,7 @@ jobs:
               with:
                 python-version: "3.11.x"
             - run: python3 -m pip install requests
-            - run: python3 main.py
+            - run: python3 main.py > LATEST
             - name: Commit files 
               id: commit-files
               run: |
