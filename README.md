@@ -1,5 +1,7 @@
 # bilibili_poster
 
+[![update](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml)
+
 **哔哩哔哩开屏插画**（或者叫海报）集锦：
 
 ![](assets/2024-06-08-15-20-05.png)
