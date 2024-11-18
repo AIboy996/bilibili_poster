@@ -6,7 +6,8 @@
 
 ![](assets/2024-06-08-15-20-05.png)
 
-> 主要使用的B站api：<https://app.bilibili.com/x/v2/splash/brand/list>, 网页源代码模版：<https://codepen.io/tobiasdev/pen/zzEzVQ>
+> - 主要使用的B站api：<https://app.bilibili.com/x/v2/splash/brand/list>
+> - 网页源代码模版：<https://codepen.io/tobiasdev/pen/zzEzVQ>
 
 ## About
 
