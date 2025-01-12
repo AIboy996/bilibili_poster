@@ -1,4 +1,5 @@
 # bilibili_poster
+> 哔哩哔哩已经很久没有推出新的海报了
 
 [![update](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml)
 
