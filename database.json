@@ -138,5 +138,35 @@
         "thumb": "https://i0.hdslb.com/bfs/garb/b1dd824c4fd99cb966245de78f775033961b5620.webp",
         "thumb_hash": "29a5e53fcd95d82dec534a7e57cf6bb7",
         "thumb_name": "2024中秋"
+    },
+    "0120": {
+        "thumb": "https://i0.hdslb.com/bfs/garb/aa148313ca91f579f813573847f9b4362fc5b276.webp",
+        "thumb_hash": "857a3f463c6e84001ce70a4afad2a2ff",
+        "thumb_name": "2025春节打铁花"
+    },
+    "0121": {
+        "thumb": "https://i0.hdslb.com/bfs/garb/66d3179f2dce9bc9a28609fd782cae2afd0b03d4.webp",
+        "thumb_hash": "ca0e859a4c496f3855ebecbf98cbba22",
+        "thumb_name": "2025春节放御灯"
+    },
+    "0122": {
+        "thumb": "https://i0.hdslb.com/bfs/garb/a855072e6db58d381dc5424cd8e720ea80153eae.webp",
+        "thumb_hash": "cc1810978b247b3a936ab0c1b43dc9b0",
+        "thumb_name": "2025春节滚灯球"
+    },
+    "0123": {
+        "thumb": "https://i0.hdslb.com/bfs/garb/2132ccc84847907952361d8a95e459967b20620d.webp",
+        "thumb_hash": "1b2fad4873c61c9eb0fa1ff6e7fe8013",
+        "thumb_name": "2025春节聚天宫"
+    },
+    "0124": {
+        "thumb": "https://i0.hdslb.com/bfs/garb/c77fe0a05d2bd76e8316fd4069364e83244032e7.webp",
+        "thumb_hash": "e612ca9a86b68fac55c0c6ea48a273c0",
+        "thumb_name": "2025春节跨火盆"
+    },
+    "0125": {
+        "thumb": "https://i0.hdslb.com/bfs/garb/9a476f9a9f93cadd7174b6387adf49bface922dc.webp",
+        "thumb_hash": "1370b2582666702122da8f0d270d59b1",
+        "thumb_name": "2025春节舞龙狮"
     }
 }
