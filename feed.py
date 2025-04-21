@@ -1,0 +1,108 @@
+import json
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+import os
+import subprocess
+
+
+def generate_rss_feed(channel_info, items, output_file="feed.rss"):
+    """
+    生成RSS XML文件
+
+    参数:
+        channel_info (dict): 包含频道信息的字典
+        items (list): 包含多个条目字典的列表
+        output_file (str): 输出的RSS文件名
+    """
+    # 创建根元素<rss>，并设置版本属性
+    rss = ET.Element(
+        "rss",
+        {
+            "version": "2.0",
+            "xmlns:atom": "http://www.w3.org/2005/Atom",
+            "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+        },
+    )
+
+    # 创建<channel>元素
+    channel = ET.SubElement(rss, "channel")
+    # 添加频道基本信息
+    for key, value in channel_info.items():
+        if key == "atom:link":
+            # 添加atom:link元素
+            atom_link = ET.SubElement(channel, "atom:link")
+            for attr_key, attr_value in value.items():
+                atom_link.set(attr_key, attr_value)
+        else:
+            ET.SubElement(channel, key).text = value
+
+    # 添加每个条目
+    for item in items:
+        item_elem = ET.SubElement(channel, "item")
+        for key, value in item.items():
+            ET.SubElement(item_elem, key).text = value
+
+    # 创建ElementTree对象并写入文件
+    tree = ET.ElementTree(rss)
+    tree.write(output_file, encoding="utf-8", xml_declaration=True)
+
+
+def get_git_creation_date(file_path):
+    """
+    获取文件的Git提交时间
+    """
+    try:
+        result = subprocess.run(
+            " ".join(["git", "log", "--format=%aI", f'"{file_path}"']),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True,
+            shell=True,
+        )
+        creation_date = result.stdout.strip()
+        if creation_date:
+            dt = datetime.fromisoformat(creation_date)
+            return dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
+    except Exception as e:
+        print(f"无法获取文件的Git创建时间: {e}")
+    return None
+
+
+# 频道信息
+channel_info = {
+    "title": "哔哩哔哩开屏插画集锦",
+    "description": "每日更新哔哩哔哩开屏插画",
+    "link": "https://bilibili.yangz.com",
+    "atom:link": {
+        "href": "https://bilibili.yangz.com/feed.xml",
+        "rel": "self",
+        "type": "application/rss+xml",
+    },
+    "language": "zh-cn",
+    "managingEditor": "Zhang, Yang",
+    "docs": "https://github.com/AIboy996/bilibili_poster",
+    "pubDate": datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0800"),
+    "lastBuildDate": datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0800"),
+    "ttl": "1440",
+}
+
+# 条目列表
+items = []
+with open("database.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+    for item in list(data)[::-1]:
+        # 处理每个条目
+        name = data[item]["thumb_name"]
+        url = data[item]["thumb"]
+        item_info = {
+            "title": name,
+            "link": url,
+            "description": name + "快乐！",
+            "pubDate": get_git_creation_date(f"./imgs/{name}.webp"),
+        }
+        items.append(item_info)
+
+if __name__ == "__main__":
+    # 生成RSS文件
+    generate_rss_feed(channel_info, items, "feed.xml")
