@@ -62,8 +62,11 @@ with open("database.json", "r", encoding="utf-8") as f:
         date = data[item]["date"]
         item_info = {
             "title": name,
-            "link": url,
-            "description": name + "快乐！",
+            "link": f"https://bilibili.yangz.site/imgs/{name}.webp",
+            "description": f'<img src="https://bilibili.yangz.site/imgs/{name}.webp"></img><br>'
+            + name
+            + "快乐！"
+            + f"<br>版权归哔哩哔哩所有，原图链接：<a href='{url}'>link</a>",
             "pubDate": date,
         }
         items.append(item_info)
