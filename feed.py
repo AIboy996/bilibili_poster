@@ -63,10 +63,10 @@ with open("database.json", "r", encoding="utf-8") as f:
         item_info = {
             "title": name,
             "link": f"https://bilibili.yangz.site/imgs/{name}.webp",
-            "description": f'<img src="https://bilibili.yangz.site/imgs/{name}.webp"></img><br>'
+            "guid": f"https://bilibili.yangz.site/imgs/{name}.webp",
+            "description": f'<img src="https://bilibili.yangz.site/imgs/{name}.webp" alt="{name}"><br>'
             + name
-            + "快乐！"
-            + f"<br>版权归哔哩哔哩所有，原图链接：<a href='{url}'>link</a>",
+            + "快乐！",
             "pubDate": date,
         }
         items.append(item_info)
