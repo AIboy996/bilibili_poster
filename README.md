@@ -1,7 +1,6 @@
 # bilibili_poster
-> 哔哩哔哩已经很久没有推出新的海报了
 
-[![update](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml)
+[![update](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml)  [![](https://img.shields.io/badge/RSS-update_every_day-blue.svg)](https://bilibili.yangz.com/feed.xml)
 
 **哔哩哔哩开屏插画**（或者叫海报）集锦：
 

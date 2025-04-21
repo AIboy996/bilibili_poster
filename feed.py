@@ -1,18 +1,12 @@
 import json
+import subprocess
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
-import os
-import subprocess
 
 
-def generate_rss_feed(channel_info, items, output_file="feed.rss"):
+def generate_rss_feed(channel_info, items, output_file="feed.xml"):
     """
     生成RSS XML文件
-
-    参数:
-        channel_info (dict): 包含频道信息的字典
-        items (list): 包含多个条目字典的列表
-        output_file (str): 输出的RSS文件名
     """
     # 创建根元素<rss>，并设置版本属性
     rss = ET.Element(
@@ -24,25 +18,18 @@ def generate_rss_feed(channel_info, items, output_file="feed.rss"):
         },
     )
 
-    # 创建<channel>元素
     channel = ET.SubElement(rss, "channel")
-    # 添加频道基本信息
     for key, value in channel_info.items():
         if key == "atom:link":
-            # 添加atom:link元素
             atom_link = ET.SubElement(channel, "atom:link")
             for attr_key, attr_value in value.items():
                 atom_link.set(attr_key, attr_value)
         else:
             ET.SubElement(channel, key).text = value
-
-    # 添加每个条目
     for item in items:
         item_elem = ET.SubElement(channel, "item")
         for key, value in item.items():
             ET.SubElement(item_elem, key).text = value
-
-    # 创建ElementTree对象并写入文件
     tree = ET.ElementTree(rss)
     tree.write(output_file, encoding="utf-8", xml_declaration=True)
 
