@@ -1,5 +1,4 @@
 import json
-import subprocess
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
@@ -34,28 +33,6 @@ def generate_rss_feed(channel_info, items, output_file="feed.xml"):
     tree.write(output_file, encoding="utf-8", xml_declaration=True)
 
 
-def get_git_creation_date(file_path):
-    """
-    获取文件的Git提交时间
-    """
-    try:
-        result = subprocess.run(
-            " ".join(["git", "log", "--format=%aI", f'"{file_path}"']),
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            check=True,
-            shell=True,
-        )
-        creation_date = result.stdout.strip()
-        if creation_date:
-            dt = datetime.fromisoformat(creation_date)
-            return dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
-    except Exception as e:
-        print(f"无法获取文件的Git创建时间: {e}")
-    return None
-
-
 # 频道信息
 channel_info = {
     "title": "哔哩哔哩开屏插画集锦",
@@ -82,11 +59,12 @@ with open("database.json", "r", encoding="utf-8") as f:
         # 处理每个条目
         name = data[item]["thumb_name"]
         url = data[item]["thumb"]
+        date = data[item]["date"]
         item_info = {
             "title": name,
             "link": url,
             "description": name + "快乐！",
-            "pubDate": get_git_creation_date(f"./imgs/{name}.webp"),
+            "pubDate": date,
         }
         items.append(item_info)
 

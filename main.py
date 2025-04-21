@@ -1,5 +1,6 @@
 import requests
 import json
+from datetime import datetime, timezone
 
 with open("./database.json") as f:
     database: dict = json.load(f)
@@ -16,17 +17,19 @@ update = []
 
 if response.ok:
     for poster in response.json()["data"]["list"]:
-        poster_id = f'{poster["id"]:04d}'
+        poster_id = f"{poster['id']:04d}"
         poster_name = poster["thumb_name"]
         poster_hash = poster["thumb_hash"]
         poster_url = poster["thumb"]
         thumb_hash = database.get(poster_id, {}).get("thumb_hash", "")
         if poster.get("thumb_hash") != thumb_hash:
+            dt = datetime.now(timezone.utc).strftime(r"%Y-%m-%d %H:%M:%S %z")
             update.append((poster_id, poster_name))
             database[poster_id] = dict(
                 thumb_name=poster_name,
                 thumb=poster_url,
                 thumb_hash=poster_hash,
+                date=dt,
             )
             with open(f"./imgs/{poster_name}.webp", "wb+") as f:
                 f.write(
