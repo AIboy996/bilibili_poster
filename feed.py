@@ -37,9 +37,9 @@ def generate_rss_feed(channel_info, items, output_file="feed.xml"):
 channel_info = {
     "title": "哔哩哔哩开屏插画集锦",
     "description": "每日更新哔哩哔哩开屏插画",
-    "link": "https://bilibili.yangz.com",
+    "link": "https://bilibili.yangz.site",
     "atom:link": {
-        "href": "https://bilibili.yangz.com/feed.xml",
+        "href": "https://bilibili.yangz.site/feed.xml",
         "rel": "self",
         "type": "application/rss+xml",
     },
@@ -64,9 +64,10 @@ with open("database.json", "r", encoding="utf-8") as f:
             "title": name,
             "link": f"https://bilibili.yangz.site/imgs/{name}.webp",
             "guid": f"https://bilibili.yangz.site/imgs/{name}.webp",
-            "description": f'<img src="https://bilibili.yangz.site/imgs/{name}.webp" alt="{name}"><br>'
-            + name
-            + "快乐！",
+            "description": f"""
+{name}快乐！<br>
+<img src="https://bilibili.yangz.site/imgs/{name}.webp" alt="{name}"><br>
+""",
             "pubDate": date,
         }
         items.append(item_info)
