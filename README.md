@@ -1,6 +1,6 @@
 # bilibili_poster
 
-[![update](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml)  [![](https://img.shields.io/badge/RSS-update_every_day-blue.svg)](https://bilibili.yangz.com/feed.xml)
+[![update](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml/badge.svg?branch=main)](https://github.com/AIboy996/bilibili_poster/actions/workflows/update.yml)  [![](https://img.shields.io/badge/RSS-update_every_day-blue.svg)](https://bilibili.yangz.site/feed.xml)
 
 **哔哩哔哩开屏插画**（或者叫海报）集锦：
 
