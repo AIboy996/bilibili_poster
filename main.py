@@ -39,6 +39,6 @@ if response.ok:
                 )
 
 if update:
-    print(update[0][1], end="")
+    print(update[0][1])
     with open("./database.json", mode="w", encoding="utf8") as f:
         json.dump(database, f, sort_keys=True, indent=4, ensure_ascii=False)
