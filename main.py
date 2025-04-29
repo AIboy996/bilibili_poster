@@ -2,7 +2,7 @@ import requests
 import json
 from datetime import datetime, timezone
 
-with open("./database.json") as f:
+with open("./database.json", encoding="utf8") as f:
     database: dict = json.load(f)
 
 url = "https://app.bilibili.com/x/v2/splash/brand/list?appkey=1d8b6e7d45233436&ts=0&sign=78a89e153cd6231a4a4d55013aa063ce"
