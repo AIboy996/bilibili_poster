@@ -238,5 +238,11 @@
         "thumb": "https://i0.hdslb.com/bfs/splash/552d938598abcfda3077a539aa8bc483bddf8bda.webp",
         "thumb_hash": "88835b4eb793752efb675cd8f6ebbee1",
         "thumb_name": "2025端午"
+    },
+    "0132": {
+        "date": "2025-06-04 01:01:01 +0000",
+        "thumb": "https://i0.hdslb.com/bfs/splash/23a49a76dc3e6cc9b26e0956596b3f6185608e29.webp",
+        "thumb_hash": "38d43e9fb2a9ed0c45577e2f409f7fe9",
+        "thumb_name": "2025高考"
     }
 }
