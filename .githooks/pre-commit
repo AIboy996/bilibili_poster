@@ -1,0 +1,41 @@
+#!/bin/sh
+# 提交前同步检查：先 fetch，远程有本地没有的提交时禁止提交。
+# 紧急绕过（不推荐）：SKIP_PRE_COMMIT_FETCH=1 git commit ...
+
+set -e
+
+if [ "${SKIP_PRE_COMMIT_FETCH:-0}" = "1" ]; then
+    echo "[pre-commit] 已跳过远程同步检查 (SKIP_PRE_COMMIT_FETCH=1)" >&2
+    exit 0
+fi
+
+# 没有上游分支（游离 HEAD、本地新建未跟踪的分支）时无从比较，放行
+upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null) || {
+    echo "[pre-commit] 当前分支没有远端跟踪分支，跳过同步检查" >&2
+    exit 0
+}
+remote=${upstream%%/*}
+
+# 1) 先 fetch
+if ! git fetch --quiet "$remote" 2>/dev/null; then
+    echo "[pre-commit] 无法从 $remote 拉取远程状态（网络或权限问题），已阻止提交。" >&2
+    echo "            确认远程可用后重试；确需跳过：SKIP_PRE_COMMIT_FETCH=1 git commit ..." >&2
+    exit 1
+fi
+
+# 2) 远程是否有本地缺少的提交
+behind=$(git rev-list --count "HEAD..$upstream")
+
+if [ "$behind" -gt 0 ]; then
+    echo "" >&2
+    echo "[pre-commit] 远程 $upstream 有 $behind 个新提交，本地已落后，提交被阻止。" >&2
+    echo "" >&2
+    echo "  请先更新再提交：" >&2
+    echo "    git pull --rebase" >&2
+    echo "" >&2
+    git --no-pager log --oneline --max-count=5 "HEAD..$upstream" | sed 's/^/    /' >&2
+    echo "" >&2
+    exit 1
+fi
+
+exit 0
